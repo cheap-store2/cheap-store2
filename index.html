@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheap Store - Electrónica al mejor precio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --accent-color: #00ffcc;
+      --card-bg: #1e1e1e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .search-bar {
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      display: flex;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 1rem;
+      background-color: #2a2a2a;
+      color: var(--text-color);
+    }
+
+    .search-bar button {
+      padding: 12px 20px;
+      border: none;
+      background-color: var(--accent-color);
+      color: #000;
+      font-weight: bold;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+
+    .product-card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="site-title">Cheap Store</h1>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar productos..." onkeyup="filterProducts()" />
+    <button onclick="filterProducts()">Buscar</button>
+  </div>
+
+  <section class="products" id="productList">
+    <!-- Ejemplo de producto (puedes duplicar esto para más productos) -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x200.png?text=Producto+1" alt="Producto 1">
+      <h3>Auriculares Bluetooth</h3>
+      <p>Auriculares inalámbricos con cancelación de ruido.</p>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x200.png?text=Producto+2" alt="Producto 2">
+      <h3>Smartwatch Deportivo</h3>
+      <p>Reloj inteligente con monitor de ritmo cardíaco.</p>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x200.png?text=Producto+3" alt="Producto 3">
+      <h3>Teclado Mecánico</h3>
+      <p>Teclado retroiluminado ideal para gamers.</p>
+    </div>
+  </section>
+
+  <script>
+    function filterProducts() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".product-card");
+
+      cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
